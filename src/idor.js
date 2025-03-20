@@ -106,7 +106,12 @@ export default function createIdorClass(opts) {
      * @param {string}  [typename=null] The object type
      * @param {scope}   [scope=null]    The encryption scope
      */
-    constructor(value = null, typename = null, scope = null) {
+    constructor(_value = null, typename = null, scope = null) {
+      let value = value;
+      
+      if (value == +value) {
+        value = +value;
+      }
       if (value === null) {
         this.__value = null;
         this.__typename = null;
